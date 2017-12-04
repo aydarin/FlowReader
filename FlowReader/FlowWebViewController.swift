@@ -17,6 +17,7 @@ class FlowWebViewController: UIViewController {
     
     private var velocity: Float = 1.0
     private var isScrolling = false
+    private var willResignActiveObserver: Any?
     
     @IBOutlet private weak var toggleFlowButton: UIBarButtonItem!
     @IBOutlet private weak var speedUpButton: UIBarButtonItem!
@@ -30,8 +31,20 @@ class FlowWebViewController: UIViewController {
         
         title = "FlowReader"
         
+        willResignActiveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive,
+                                                                          object: nil,
+                                                                          queue: nil) { [weak self] _ in
+                                                                            self?.stopScrollingIfNeeded()
+        }
+        
         resetVelocity()
         webView.load(URLRequest(url: URL(string: startUrl)!))
+    }
+    
+    deinit {
+        if let willResignActiveObserver = willResignActiveObserver {
+            NotificationCenter.default.removeObserver(willResignActiveObserver)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +57,7 @@ class FlowWebViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         UIApplication.shared.isIdleTimerDisabled = false
+        stopScrollingIfNeeded()
     }
     
     private func scrollContentIfNeeded() {
