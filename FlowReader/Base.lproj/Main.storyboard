@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AxI-ZE-QHM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YHt-AM-tQZ">
+            <objects>
+                <navigationController id="AxI-ZE-QHM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fnd-kM-M3U">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ypd-jv-OtA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WFA-t5-ugG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1254" y="103"/>
+        </scene>
+        <!--Flow Web View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FlowWebViewController" customModule="FlowReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIX-jf-vCC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYn-JR-lZE">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Save" id="t8Z-gg-IWG">
+                                        <connections>
+                                            <action selector="saveVelocityPressed:" destination="BYZ-38-t0r" id="0GI-DB-vdy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Reset" id="NFf-EY-nAi">
+                                        <connections>
+                                            <action selector="resetVelocityPressed:" destination="BYZ-38-t0r" id="z4F-ZO-evR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="⬅️" id="4Ob-u6-QzV">
+                                        <connections>
+                                            <action selector="goBackPressed:" destination="BYZ-38-t0r" id="TcW-SI-qWE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="➡️" id="sxR-g4-7G4">
+                                        <connections>
+                                            <action selector="goForwardPressed:" destination="BYZ-38-t0r" id="HKH-Ai-Eze"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hs3-DY-ByL"/>
+                                    <barButtonItem title="⏫" id="LQQ-As-fEF">
+                                        <connections>
+                                            <action selector="speedUpPressed:" destination="BYZ-38-t0r" id="ecK-Gk-vgE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="⏬" id="wSC-eo-DsA">
+                                        <connections>
+                                            <action selector="slowDownPressed:" destination="BYZ-38-t0r" id="D1V-Hu-hrp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Start" id="oKA-33-w8H">
+                                        <connections>
+                                            <action selector="togglePressed:" destination="BYZ-38-t0r" id="cRW-gW-jL3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DYn-JR-lZE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FbL-ZX-KQQ"/>
+                            <constraint firstItem="DYn-JR-lZE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jz2-qf-Ypj"/>
+                            <constraint firstItem="DYn-JR-lZE" firstAttribute="top" secondItem="VIX-jf-vCC" secondAttribute="bottom" id="Zff-dF-v7s"/>
+                            <constraint firstItem="DYn-JR-lZE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="clK-Sr-n9z"/>
+                            <constraint firstItem="VIX-jf-vCC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eV6-1n-WQ6"/>
+                            <constraint firstItem="VIX-jf-vCC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kx1-bB-0XF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VIX-jf-vCC" secondAttribute="trailing" id="neC-SM-dtI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CXx-eF-NNy"/>
+                    <connections>
+                        <outlet property="goBackButton" destination="4Ob-u6-QzV" id="Kqn-hx-lgq"/>
+                        <outlet property="goForwardButton" destination="sxR-g4-7G4" id="g7i-wo-ALD"/>
+                        <outlet property="slowDownButton" destination="wSC-eo-DsA" id="vZb-GP-Y60"/>
+                        <outlet property="speedUpButton" destination="LQQ-As-fEF" id="odT-um-7ag"/>
+                        <outlet property="toggleFlowButton" destination="oKA-33-w8H" id="XRV-i6-L3a"/>
+                        <outlet property="webView" destination="VIX-jf-vCC" id="Vns-cb-cxY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-300" y="102.99850074962519"/>
+        </scene>
+    </scenes>
+</document>
